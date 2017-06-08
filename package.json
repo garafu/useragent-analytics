@@ -1,0 +1,18 @@
+{
+  "name": "useragent-analytics",
+  "version": "0.0.1",
+  "description": "\"useragent-analytics\" is a analyzer of useragent string.",
+  "main": "source/index.js",
+  "scripts": {
+    "test": "jasmine-node spec/"
+  },
+  "keywords": [
+    "useragent",
+    "ua",
+    "parse",
+    "analyze"
+  ],
+  "author": "Akinari Tsugo",
+  "license": "MIT",
+  "dependencies": {}
+}

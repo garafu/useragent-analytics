@@ -1,0 +1,1174 @@
+var BrowserInfo = require("../source/browserinfo.js");
+const BrowserType = require("../source/browsertype.js");
+const RenderingEngineType = require("../source/renderingenginetype.js");
+const JavaScriptEngineType = require("../source/javascriptenginetype.js");
+const ArchitectureType = require("../source/architecturetype.js");
+
+describe('BrowserInfo class', function () {
+  var browser;
+
+  describe('"initialize" private method', function () {
+    var userAgent, result;
+
+    beforeEach(function () {
+      browser = new BrowserInfo();
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A403 Safari/8536.25"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A403 Safari/8536.25';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Safari".', function () {
+        expect(browser.type).toBe(BrowserType.SAFARI);
+      });
+
+      it('detect browser version is "6.0".', function () {
+        expect(browser.version.original).toBe('6.0');
+      });
+
+      it('detect rendering engin is "webkit".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.WEBKIT);
+      });
+
+      it('detect javascript engin is "JavaScriptCore".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JAVASCRIPT_CORE);
+      });
+
+      it('detect architecture is "unknown".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_4 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/26.0.1410.53 Mobile/10B350 Safari/8536.25"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_4 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/26.0.1410.53 Mobile/10B350 Safari/8536.25';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Chrome"', function () {
+        expect(browser.type).toBe(BrowserType.CHROME);
+      });
+
+      it('detect browser version is "26.0.1410.53"', function () {
+        expect(browser.version.original).toBe('26.0.1410.53');
+      });
+
+      it('detect rendering engin is "webkit".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.WEBKIT);
+      });
+
+      it('detect javascript engin is "JavaScriptCore".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JAVASCRIPT_CORE);
+      });
+
+      it('detect architecture is "unknown".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0_1 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Mercury/7.4.2 Mobile/10A523 Safari/8536.25"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 6_0_1 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Mercury/7.4.2 Mobile/10A523 Safari/8536.25';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Mercury"', function () {
+        expect(browser.type).toBe(BrowserType.MERCURY);
+      });
+
+      it('detect browser version is "7.4.2"', function () {
+        expect(browser.version.original).toBe('7.4.2');
+      });
+
+      it('detect rendering engin is "webkit".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.WEBKIT);
+      });
+
+      it('detect javascript engin is "JavaScriptCore".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JAVASCRIPT_CORE);
+      });
+
+      it('detect architecture is "unknown".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Opera/9.80 (iPhone; Opera Mini/7.0.5/29.3709; U; ja) Presto/2.8.119 Version/11.10n/11.10"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Opera/9.80 (iPhone; Opera Mini/7.0.5/29.3709; U; ja) Presto/2.8.119 Version/11.10n/11.10';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Opera Mini"', function () {
+        expect(browser.type).toBe(BrowserType.OPERA_MINI);
+      });
+
+      it('detect browser version is "7.0.5"', function () {
+        expect(browser.version.original).toBe('7.0.5');
+      });
+
+      it('detect rendering engin is "Presto".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.PRESTO);
+      });
+
+      it('detect javascript engin is "Carakan".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.CARAKAN);
+      });
+
+      it('detect architecture is "unknown".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (iPod; CPU iPhone OS 5_0_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A405 Safari/7534.48.3"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (iPod; CPU iPhone OS 5_0_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A405 Safari/7534.48.3';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Safari"', function () {
+        expect(browser.type).toBe(BrowserType.SAFARI);
+      });
+
+      it('detect browser version is "5.1"', function () {
+        expect(browser.version.original).toBe('5.1');
+      });
+
+      it('detect rendering engin is "webkit".', function () {
+        expect(browser.rendering).toBeTruthy();
+      });
+
+      it('detect javascript engin is "javascriptcore".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JAVASCRIPT_CORE);
+      });
+
+      it('detect architecture is "unknown".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A403 Safari/8536.25"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A403 Safari/8536.25';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Safari"', function () {
+        expect(browser.type).toBe(BrowserType.SAFARI);
+      });
+
+      it('detect browser version is "6.0"', function () {
+        expect(browser.version.original).toBe('6.0');
+      });
+
+      it('detect rendering engin is "webkit".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.WEBKIT);
+      });
+
+      it('detect javascript engin is "javascriptcore".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JAVASCRIPT_CORE);
+      });
+
+      it('detect architecture is "unknown".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Opera/9.80 (Android 2.1-update1; Linux; Opera Mobi/ADR-1104201100; U; en) Presto/2.7.81 Version/11.00"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Opera/9.80 (Android 2.1-update1; Linux; Opera Mobi/ADR-1104201100; U; en) Presto/2.7.81 Version/11.00';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Opera Mobile"', function () {
+        expect(browser.type).toBe(BrowserType.OPERA_MOBILE);
+      });
+
+      it('detect browser version is "11.00"', function () {
+        expect(browser.version.original).toBe('11.00');
+      });
+
+      it('detect rendering engin is "Presto".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.PRESTO);
+      });
+
+      it('detect javascript engin is "Carakan".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.CARAKAN);
+      });
+
+      it('detect architecture is "unknown".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Linux; U; Android 2.2.1; ja-jp; IS03 Build/S9090) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Linux; U; Android 2.2.1; ja-jp; IS03 Build/S9090) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Android default browser"', function () {
+        expect(browser.type).toBe(BrowserType.BROWSER);
+      });
+
+      it('detect browser version is "4.0"', function () {
+        expect(browser.version.original).toBe('4.0');
+      });
+
+      it('detect rendering engin is "webkit".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.WEBKIT);
+      });
+
+      it('detect javascript engin is "javascriptcore".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JAVASCRIPT_CORE);
+      });
+
+      it('detect architecture is "unknown".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+
+
+    describe('when userAgent is "Mozilla/5.0 (Linux; U; Android 2.3.4; ja-jp; SonyEricssonIS11S Build/4.0.1.B.0.112) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Linux; U; Android 2.3.4; ja-jp; SonyEricssonIS11S Build/4.0.1.B.0.112) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Android default browser"', function () {
+        expect(browser.type).toBe(BrowserType.BROWSER);
+      });
+
+      it('detect browser version is "4.0"', function () {
+        expect(browser.version.original).toBe('4.0');
+      });
+
+      it('detect rendering engin is "webkit".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.WEBKIT);
+      });
+
+      it('detect javascript engin is "javascriptcore".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JAVASCRIPT_CORE);
+      });
+
+      it('detect architecture is "unknown".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Linux; U; Android 3.2; ja-jp; Sony Tablet S Build/THMAS11000) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Linux; U; Android 3.2; ja-jp; Sony Tablet S Build/THMAS11000) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Android default browser"', function () {
+        expect(browser.type).toBe(BrowserType.BROWSER);
+      });
+
+      it('detect browser version is "4.0"', function () {
+        expect(browser.version.original).toBe('4.0');
+      });
+
+      it('detect rendering engin is "webkit".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.WEBKIT);
+      });
+
+      it('detect javascript engin is "javascriptcore".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JAVASCRIPT_CORE);
+      });
+
+      it('detect architecture is "unknown".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Linux; U; ja-jp; KFTT Build/IML74K) AppleWebKit/535.19 (KHTML, like Gecko) Silk/2.4 Safari/535.19 Silk-Accelerated=true"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Linux; U; ja-jp; KFTT Build/IML74K) AppleWebKit/535.19 (KHTML, like Gecko) Silk/2.4 Safari/535.19 Silk-Accelerated=true';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Android default browser"', function () {
+        expect(browser.type).toBe(BrowserType.SILK);
+      });
+
+      it('detect browser version is "2.4"', function () {
+        expect(browser.version.original).toBe('2.4');
+      });
+
+      it('detect rendering engin is "webkit".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.WEBKIT);
+      });
+
+      it('detect javascript engin is "javascriptcore".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JAVASCRIPT_CORE);
+      });
+
+      it('detect architecture is "unknown".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; FujitsuToshibaMobileCommun; IS12T; KDDI)"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; FujitsuToshibaMobileCommun; IS12T; KDDI)';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Internet Explorer"', function () {
+        expect(browser.type).toBe(BrowserType.MSIE);
+      });
+
+      it('detect browser version is "9.0"', function () {
+        expect(browser.version.original).toBe('9.0');
+      });
+
+      it('detect rendering engin is "trident".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.TRIDENT);
+      });
+
+      it('detect javascript engin is "JScript".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JSCRIPT);
+      });
+
+      it('detect architecture is "unknown".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.1.4322; .NET CLR 2.0.41115)"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.1.4322; .NET CLR 2.0.41115)';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Internet Explorer"', function () {
+        expect(browser.type).toBe(BrowserType.MSIE);
+      });
+
+      it('detect browser version is "6.0"', function () {
+        expect(browser.version.original).toBe('6.0');
+      });
+
+      it('detect rendering engin is "Trident".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.TRIDENT);
+      });
+
+      it('detect javascript engin is "JScript".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JSCRIPT);
+      });
+
+      it('detect architecture is "x86".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.04506)"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.04506)';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Internet Explorer"', function () {
+        expect(browser.type).toBe(BrowserType.MSIE);
+      });
+
+      it('detect browser version is "7.0"', function () {
+        expect(browser.version.original).toBe('7.0');
+      });
+
+      it('detect rendering engin is "Trident".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.TRIDENT);
+      });
+
+      it('detect javascript engin is "JScript".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JSCRIPT);
+      });
+
+      it('detect architecture is "x86".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; EasyBits GO v1.0; InfoPath.1; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; EasyBits GO v1.0; InfoPath.1; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Internet Explorer"', function () {
+        expect(browser.type).toBe(BrowserType.MSIE);
+      });
+
+      it('detect browser version is "8.0"', function () {
+        expect(browser.version.original).toBe('8.0');
+      });
+
+      it('detect rendering engin is "Trident".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.TRIDENT);
+      });
+
+      it('detect javascript engin is "JScript".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JSCRIPT);
+      });
+
+      it('detect architecture is "x86".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Internet Explorer"', function () {
+        expect(browser.type).toBe(BrowserType.MSIE);
+      });
+
+      it('detect browser version is "9.0"', function () {
+        expect(browser.version.original).toBe('9.0');
+      });
+
+      it('detect rendering engin is "Trident".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.TRIDENT);
+      });
+
+      it('detect javascript engin is "JScript".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JSCRIPT);
+      });
+
+      it('detect architecture is "x86".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2; .NET4.0C; .NET4.0E; Tablet PC 2.0)"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2; .NET4.0C; .NET4.0E; Tablet PC 2.0)';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Internet Explorer"', function () {
+        expect(browser.type).toBe(BrowserType.MSIE);
+      });
+
+      it('detect browser version is "10.0"', function () {
+        expect(browser.version.original).toBe('10.0');
+      });
+
+      it('detect rendering engin is "Trident".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.TRIDENT);
+      });
+
+      it('detect javascript engin is "JScript".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JSCRIPT);
+      });
+
+      it('detect architecture is "x86".', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Internet Explorer"', function () {
+        expect(browser.type).toBe(BrowserType.MSIE);
+      });
+
+      it('detect browser version is "10.0"', function () {
+        expect(browser.version.original).toBe('10.0');
+      });
+
+      it('detect rendering engin is "Trident".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.TRIDENT);
+      });
+
+      it('detect javascript engin is "JScript".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JSCRIPT);
+      });
+
+      it('detect browser executing architecture is x86', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Internet Explorer"', function () {
+        expect(browser.type).toBe(BrowserType.MSIE);
+      });
+
+      it('detect browser version is "10.0"', function () {
+        expect(browser.version.original).toBe('10.0');
+      });
+
+      it('detect rendering engin is "Trident".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.TRIDENT);
+      });
+
+      it('detect javascript engin is "JScript".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JSCRIPT);
+      });
+
+      it('detect browser executing architecture is x86', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Win64; x64; Trident/6.0)"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Win64; x64; Trident/6.0)';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Internet Explorer"', function () {
+        expect(browser.type).toBe(BrowserType.MSIE);
+      });
+
+      it('detect browser version is "10.0"', function () {
+        expect(browser.version.original).toBe('10.0');
+      });
+
+      it('detect rendering engin is "Trident".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.TRIDENT);
+      });
+
+      it('detect javascript engin is "JScript".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JSCRIPT);
+      });
+
+      it('detect browser executing architecture is x64', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X64);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0)"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0)';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Internet Explorer"', function () {
+        expect(browser.type).toBe(BrowserType.MSIE);
+      });
+
+      it('detect browser version is "10.0"', function () {
+        expect(browser.version.original).toBe('10.0');
+      });
+
+      it('detect rendering engin is "Trident".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.TRIDENT);
+      });
+
+      it('detect javascript engin is "JScript".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JSCRIPT);
+      });
+
+      it('detect browser executing architecture is ARM', function () {
+        expect(browser.architecture).toBe(ArchitectureType.ARM);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv 11.0) like Gecko"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv 11.0) like Gecko';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Internet Explorer"', function () {
+        expect(browser.type).toBe(BrowserType.MSIE);
+      });
+
+      it('detect browser version is "11.0"', function () {
+        expect(browser.version.original).toBe('11.0');
+      });
+
+      it('detect rendering engin is "Trident".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.TRIDENT);
+      });
+
+      it('detect javascript engin is "JScript".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JSCRIPT);
+      });
+
+      it('detect browser executing architecture is x86', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; .NET4.0E; .NET4.0C; .NET CLR 3.5.30729; .NET CLR 2.0.50727; .NET CLR 3.0.30729; Tablet PC 2.0; rv:11.0) like Gecko"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; .NET4.0E; .NET4.0C; .NET CLR 3.5.30729; .NET CLR 2.0.50727; .NET CLR 3.0.30729; Tablet PC 2.0; rv:11.0) like Gecko';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Internet Explorer"', function () {
+        expect(browser.type).toBe(BrowserType.MSIE);
+      });
+
+      it('detect browser version is "11.0"', function () {
+        expect(browser.version.original).toBe('11.0');
+      });
+
+      it('detect rendering engin is "Trident".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.TRIDENT);
+      });
+
+      it('detect javascript engin is "JScript".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JSCRIPT);
+      });
+
+      it('detect browser executing architecture is x86', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Edge"', function () {
+        expect(browser.type).toBe(BrowserType.EDGE);
+      });
+
+      it('detect browser version is "12.0"', function () {
+        expect(browser.version.original).toBe('12.0');
+      });
+
+      it('detect rendering engin is "EdgeHtml".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.EDGEHTML);
+      });
+
+      it('detect javascript engin is "Chakra".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.CHAKRA);
+      });
+
+      it('detect browser executing architecture is x86', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Edge"', function () {
+        expect(browser.type).toBe(BrowserType.EDGE);
+      });
+
+      it('detect browser version is "12.0"', function () {
+        expect(browser.version.original).toBe('12.0');
+      });
+
+      it('detect rendering engin is "EdgeHtml".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.EDGEHTML);
+      });
+
+      it('detect javascript engin is "Chakra".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.CHAKRA);
+      });
+
+      it('detect browser executing architecture is x64', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X64);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; DEVICE INFO) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Mobile Safari/537.36 Edge/12.0"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; DEVICE INFO) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Mobile Safari/537.36 Edge/12.0';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Edge"', function () {
+        expect(browser.type).toBe(BrowserType.EDGE);
+      });
+
+      it('detect browser version is "12.0"', function () {
+        expect(browser.version.original).toBe('12.0');
+      });
+
+      it('detect rendering engin is "EdgeHtml".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.EDGEHTML);
+      });
+
+      it('detect javascript engin is "Chakra".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.CHAKRA);
+      });
+
+      it('detect architecture is unknown', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Chrome"', function () {
+        expect(browser.type).toBe(BrowserType.CHROME);
+      });
+
+      it('detect browser version is "25.0.1364.172"', function () {
+        expect(browser.version.original).toBe('25.0.1364.172');
+      });
+
+      it('detect rendering engin is "webkit".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.WEBKIT);
+      });
+
+      it('detect javascript engin is "javascriptcore".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JAVASCRIPT_CORE);
+      });
+
+      it('detect architecture is "x86"', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Chrome"', function () {
+        expect(browser.type).toBe(BrowserType.CHROME);
+      });
+
+      it('detect browser version is "42.0.2311.135"', function () {
+        expect(browser.version.original).toBe('42.0.2311.135');
+      });
+
+      it('detect rendering engin is "webkit".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.WEBKIT);
+      });
+
+      it('detect javascript engin is "javascriptcore".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JAVASCRIPT_CORE);
+      });
+
+      it('detect architecture is "x86"', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Windows NT 6.1; rv:18.0) Gecko/20100101 Firefox/18.0"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Windows NT 6.1; rv:18.0) Gecko/20100101 Firefox/18.0';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Firefox"', function () {
+        expect(browser.type).toBe(BrowserType.FIREFOX);
+      });
+
+      it('detect browser version is "18.0"', function () {
+        expect(browser.version.original).toBe('18.0');
+      });
+
+      it('detect rendering engin is "Gecko".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.GECKO);
+      });
+
+      it('detect javascript engin is "SpiderMonkey".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.SPIDER_MONKEY);
+      });
+
+      it('detect architecture is "x86"', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Firefox"', function () {
+        expect(browser.type).toBe(BrowserType.FIREFOX);
+      });
+
+      it('detect browser version is "37.0"', function () {
+        expect(browser.version.original).toBe('37.0');
+      });
+
+      it('detect rendering engin is "Gecko".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.GECKO);
+      });
+
+      it('detect javascript engin is "SpiderMonkey".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.SPIDER_MONKEY);
+      });
+
+      it('detect architecture is x86', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8) AppleWebKit/536.25 (KHTML, like Gecko) Version/6.0 Safari/536.25', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8) AppleWebKit/536.25 (KHTML, like Gecko) Version/6.0 Safari/536.25';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Safari"', function () {
+        expect(browser.type).toBe(BrowserType.SAFARI);
+      });
+
+      it('detect browser version is "6.0"', function () {
+        expect(browser.version.original).toBe('6.0');
+      });
+
+      it('detect rendering engin is "webkit".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.WEBKIT);
+      });
+
+      it('detect javascript engin is "JavaScriptCore".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JAVASCRIPT_CORE);
+      });
+
+      it('detect architecture is unknown', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Opera/9.62 (Windows NT 5.1; U; ja) Presto/2.1.1"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Opera/9.62 (Windows NT 5.1; U; ja) Presto/2.1.1';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Opera"', function () {
+        expect(browser.type).toBe(BrowserType.OPERA);
+      });
+
+      it('detect browser version is "9.62"', function () {
+        expect(browser.version.original).toBe('9.62');
+      });
+
+      it('detect rendering engin is "Presto".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.PRESTO);
+      });
+
+      it('detect javascript engin is "Futhark".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.FUTHARK);
+      });
+
+      it('detect architecture is x86', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (X11; Linux i686; U; cs) Opera 8.54"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (X11; Linux i686; U; cs) Opera 8.54';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Opera"', function () {
+        expect(browser.type).toBe(BrowserType.OPERA);
+      });
+
+      it('detect browser version is "8.54"', function () {
+        expect(browser.version.original).toBe('8.54');
+      });
+
+      it('detect rendering engin is "unknown".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.UNKNOWN);
+      });
+
+      it('detect javascript engin is "unknown".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.UNKNOWN);
+      });
+
+      it('detect architecture is unknown', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Opera/9.80 (Windows NT 6.1; U; ja) Presto/2.9.168 Version/11.50"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Opera/9.80 (Windows NT 6.1; U; ja) Presto/2.9.168 Version/11.50';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Opera"', function () {
+        expect(browser.type).toBe(BrowserType.OPERA);
+      });
+
+      it('detect browser version is "11.50"', function () {
+        expect(browser.version.original).toBe('11.50');
+      });
+
+      it('detect rendering engin is "Presto".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.PRESTO);
+      });
+
+      it('detect javascript engin is "Carakan".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.CARAKAN);
+      });
+
+      it('detect architecture is x86', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+    describe('when userAgent is "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; ja) Presto/2.10.289 Version/12.00"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; ja) Presto/2.10.289 Version/12.00';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Opera"', function () {
+        expect(browser.type).toBe(BrowserType.OPERA);
+      });
+
+      it('detect browser version is "12.00"', function () {
+        expect(browser.version.original).toBe('12.00');
+      });
+
+      it('detect rendering engin is "Presto".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.PRESTO);
+      });
+
+      it('detect javascript engin is "Carakan".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.CARAKAN);
+      });
+
+      it('detect architecture is unknown', function () {
+        expect(browser.architecture).toBe(ArchitectureType.UNKNOWN);
+      });
+
+    });
+
+    describe('when userAgent is "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36 OPR/29.0.1795.47"', function () {
+
+      beforeEach(function () {
+        userAgent = 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36 OPR/29.0.1795.47';
+        browser.initialize(userAgent);
+      });
+
+      afterEach(function () {
+      });
+
+      it('detect client browser is "Opera"', function () {
+        expect(browser.type).toBe(BrowserType.OPERA);
+      });
+
+      it('detect browser version is "29.0.1795.47"', function () {
+        expect(browser.version.original).toBe('29.0.1795.47');
+      });
+
+      it('detect rendering engin is "webkit".', function () {
+        expect(browser.rendering).toBe(RenderingEngineType.WEBKIT);
+      });
+
+      it('detect javascript engin is "JavaScriptCore".', function () {
+        expect(browser.javascript).toBe(JavaScriptEngineType.JAVASCRIPT_CORE);
+      });
+
+      it('detect browser executing architecture is x86', function () {
+        expect(browser.architecture).toBe(ArchitectureType.X86);
+      });
+
+    });
+
+  });
+
+});
+
